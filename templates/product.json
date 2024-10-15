@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -20,11 +29,24 @@
           "settings": {
           }
         },
+        "custom_liquid_aVtG3V": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<!-- Ribbon section for Add to Cart animation -->\n<div class=\"ribbon\">\n  <div class=\"ribbon-text\">\n    Buy 1 Get 1 Free &nbsp;&nbsp;&nbsp;&nbsp;\n    Buy 1 Get 1 Free &nbsp;&nbsp;&nbsp;&nbsp;\n    Buy 1 Get 1 Free &nbsp;&nbsp;&nbsp;&nbsp;\n    Buy 1 Get 1 Free &nbsp;&nbsp;&nbsp;&nbsp;\n    Buy 1 Get 1 Free &nbsp;&nbsp;&nbsp;&nbsp;\n\n  </div>\n</div>\n<style>\n  /* Ribbon container */\n.ribbon {\n  position: relative;\n  background-color: white; /* Change to your desired color */\n  padding: 10px;\n  overflow: hidden;\n  width: 100%;\n  height: 50px;\n  display: flex;\n  align-items: center;\n}\n\n/* Text inside the ribbon */\n.ribbon-text {\n  white-space: nowrap;\n  font-size: 20px;\n  font-weight: bold;\n  color: red;\n  position: absolute;\n  left: 100%; /* Start the text from outside the container */\n  animation: slide 13s linear infinite; /* Adjust duration as needed */\n}\n\n/* Keyframe animation for sliding */\n@keyframes slide {\n  0% {\n    left: 100%; /* Start from right side */\n  }\n  100% {\n    left: -100%; /* End on left side */\n  }\n}\n\n</style>"
+          }
+        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
             "picker_type": "button",
             "swatch_shape": "circle"
+          }
+        },
+        "text_rqFeLa": {
+          "type": "text",
+          "settings": {
+            "text": "Text",
+            "text_style": "body"
           }
         },
         "quantity_selector": {
@@ -55,7 +77,9 @@
         "vendor",
         "title",
         "price",
+        "custom_liquid_aVtG3V",
         "variant_picker",
+        "text_rqFeLa",
         "quantity_selector",
         "buy_buttons",
         "description",
