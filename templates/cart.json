@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "cart-items": {
@@ -15,16 +24,10 @@
           "type": "subtotal",
           "settings": {
           }
-        },
-        "buttons": {
-          "type": "buttons",
-          "settings": {
-          }
         }
       },
       "block_order": [
-        "subtotal",
-        "buttons"
+        "subtotal"
       ],
       "settings": {
         "color_scheme": "scheme-1",
