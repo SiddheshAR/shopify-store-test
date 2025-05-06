@@ -24,10 +24,16 @@
           "type": "subtotal",
           "settings": {
           }
+        },
+        "buttons": {
+          "type": "buttons",
+          "settings": {
+          }
         }
       },
       "block_order": [
-        "subtotal"
+        "subtotal",
+        "buttons"
       ],
       "settings": {
         "color_scheme": "scheme-1",

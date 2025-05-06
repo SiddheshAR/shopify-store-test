@@ -29,24 +29,11 @@
           "settings": {
           }
         },
-        "custom_liquid_aVtG3V": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<!-- Ribbon section for Add to Cart animation -->\n<div class=\"ribbon\">\n  <div class=\"ribbon-text\">\n    Buy 1 Get 1 Free &nbsp;&nbsp;&nbsp;&nbsp;\n    Buy 1 Get 1 Free &nbsp;&nbsp;&nbsp;&nbsp;\n    Buy 1 Get 1 Free &nbsp;&nbsp;&nbsp;&nbsp;\n    Buy 1 Get 1 Free &nbsp;&nbsp;&nbsp;&nbsp;\n    Buy 1 Get 1 Free &nbsp;&nbsp;&nbsp;&nbsp;\n\n  </div>\n</div>\n<style>\n.ribbon {\n  position: relative;\n  background-color: white; \n  padding: 10px;\n  overflow: hidden;\n  width: 100%;\n  height: 50px;\n  display: flex;\n  align-items: center;\n}\n\n.ribbon-text {\n  white-space: nowrap;\n  font-size: 20px;\n  font-weight: bold;\n  color: red;\n  position: absolute;\n  left: 100%;\n  animation: slide 13s linear infinite; \n}\n\n/* Keyframe animation for sliding */\n@keyframes slide {\n  0% {\n    left: 100%; \n  }\n  100% {\n    left: -100%;\n  }\n}\n\n</style>"
-          }
-        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
             "picker_type": "button",
             "swatch_shape": "circle"
-          }
-        },
-        "text_rqFeLa": {
-          "type": "text",
-          "settings": {
-            "text": "Text",
-            "text_style": "body"
           }
         },
         "quantity_selector": {
@@ -77,9 +64,7 @@
         "vendor",
         "title",
         "price",
-        "custom_liquid_aVtG3V",
         "variant_picker",
-        "text_rqFeLa",
         "quantity_selector",
         "buy_buttons",
         "description",
