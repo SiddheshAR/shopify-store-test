@@ -1,0 +1,41 @@
+{% comment %}
+  Template: page.multiple-collections.liquid
+  Description: Custom page template that displays multiple collections
+{% endcomment %}
+
+<div class="page-width">
+    <div class="page-header">
+      <h1>{{ page.title }}</h1>
+      <div class="rte">
+        {{ page.content }}
+      </div>
+    </div>
+  
+    {% comment %} First Collection {% endcomment %}
+    {% assign collection1 = collections['summer-collection'] %}
+    {% if collection1 %}
+      <div class="collection-section">
+        <h2>{{ collection1.title }}</h2>
+        <div class="product-grid">
+          {% for product in collection1.products limit: 4 %}
+            {% comment %} {% render 'product-card', product: product %} {% endcomment %}
+          {% endfor %}
+        </div>
+        <a href="{{ collection1.url }}" class="btn">View all {{ collection1.title }}</a>
+      </div>
+    {% endif %}
+  
+    {% comment %} Second Collection {% endcomment %}
+    {% assign collection2 = collections['winter-collection'] %}
+    {% if collection2 %}
+      <div class="collection-section">
+        <h2>{{ collection2.title }}</h2>
+        <div class="product-grid">
+          {% for product in collection2.products limit: 4 %}
+            {% comment %} {% render 'product-card', product: product %} {% endcomment %}
+          {% endfor %}
+        </div>
+        <a href="{{ collection2.url }}" class="btn">View all {{ collection2.title }}</a>
+      </div>
+    {% endif %}
+  </div>
