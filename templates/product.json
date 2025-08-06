@@ -21,13 +21,11 @@
         },
         "title": {
           "type": "title",
-          "settings": {
-          }
+          "settings": {}
         },
         "price": {
           "type": "price",
-          "settings": {
-          }
+          "settings": {}
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -36,10 +34,21 @@
             "swatch_shape": "circle"
           }
         },
+        "icon_with_text_zM9TLq": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "horizontal",
+            "icon_1": "heart",
+            "heading_1": "Heading",
+            "icon_2": "return",
+            "heading_2": "Heading",
+            "icon_3": "truck",
+            "heading_3": "Heading"
+          }
+        },
         "quantity_selector": {
           "type": "quantity_selector",
-          "settings": {
-          }
+          "settings": {}
         },
         "buy_buttons": {
           "type": "buy_buttons",
@@ -48,10 +57,16 @@
             "show_gift_card_recipient": true
           }
         },
+        "text_KEX4zD": {
+          "type": "text",
+          "settings": {
+            "text": "Text block{{ product.metafields.custom.jknkj.value }}",
+            "text_style": "body"
+          }
+        },
         "description": {
           "type": "description",
-          "settings": {
-          }
+          "settings": {}
         },
         "share": {
           "type": "share",
@@ -65,8 +80,10 @@
         "title",
         "price",
         "variant_picker",
+        "icon_with_text_zM9TLq",
         "quantity_selector",
         "buy_buttons",
+        "text_KEX4zD",
         "description",
         "share"
       ],
