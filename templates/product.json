@@ -68,6 +68,13 @@
           "type": "description",
           "settings": {}
         },
+        "text_wntVUh": {
+          "type": "text",
+          "settings": {
+            "text": "Text block{{ product.metafields.custom.list_dropdowns | metafield_text }}",
+            "text_style": "body"
+          }
+        },
         "share": {
           "type": "share",
           "settings": {
@@ -85,6 +92,7 @@
         "buy_buttons",
         "text_KEX4zD",
         "description",
+        "text_wntVUh",
         "share"
       ],
       "settings": {
