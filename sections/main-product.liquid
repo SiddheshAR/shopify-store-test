@@ -21,6 +21,38 @@
     {{ 'component-swatch-input.css' | asset_url | stylesheet_tag }}
     {{ 'component-swatch.css' | asset_url | stylesheet_tag }}
   {% endunless %}
+  {%- if product.selected_or_first_available_variant.metafields.custom.vegan_friendly -%}
+  <div class="variant-metafield" id="vegan-badge">
+    {%- if product.selected_or_first_available_variant.metafields.custom.vegan_friendly.value == 'Yes' -%}
+      <span class="badge vegan-badge">🟢 Vegan-Friendly</span>
+    {%- endif -%}
+  </div>
+
+  <script>
+    // Wait for the page to fully load
+    document.addEventListener('DOMContentLoaded', function () {
+      // Make sure we're on a product page with variants
+      const badgeElement = document.getElementById('vegan-badge');
+      if (!badgeElement) return;
+
+      // Listen for variant changes
+      window.addEventListener('variant:changed', function (event) {
+        const variant = event.detail.variant;
+
+        // Clear the current badge
+        badgeElement.innerHTML = '';
+
+        // Only show if metafield exists AND value is "Yes"
+        if (variant?.metafields?.custom?.vegan_friendly?.value === 'Yes') {
+          const badge = document.createElement('span');
+          badge.className = 'badge vegan-badge';
+          badge.textContent = '🟢 Vegan-Friendly';
+          badgeElement.appendChild(badge);
+        }
+      });
+    });
+  </script>
+{%- endif -%}
   {%- if product.quantity_price_breaks_configured? -%}
     {{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
   {%- endif -%}
