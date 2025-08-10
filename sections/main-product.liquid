@@ -28,30 +28,42 @@
     {%- endif -%}
   </div>
 
-  <script>
-    // Wait for the page to fully load
-    document.addEventListener('DOMContentLoaded', function () {
-      // Make sure we're on a product page with variants
-      const badgeElement = document.getElementById('vegan-badge');
-      if (!badgeElement) return;
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const badgeElement = document.getElementById('vegan-badge');
+  if (!badgeElement) return;
 
-      // Listen for variant changes
-      window.addEventListener('variant:changed', function (event) {
-        const variant = event.detail.variant;
+  // Function to update badge
+  function updateVeganBadge(variant) {
+    badgeElement.innerHTML = '';
+    
+    if (variant?.metafields?.custom?.vegan_friendly?.value === 'Yes') {
+      const badge = document.createElement('span');
+      badge.className = 'badge vegan-badge';
+      badge.textContent = '🟢 Vegan-Friendly';
+      badgeElement.appendChild(badge);
+    }
+  }
 
-        // Clear the current badge
-        badgeElement.innerHTML = '';
+  // Listen for multiple possible events
+  window.addEventListener('variant:changed', function (event) {
+    updateVeganBadge(event.detail.variant);
+  });
 
-        // Only show if metafield exists AND value is "Yes"
-        if (variant?.metafields?.custom?.vegan_friendly?.value === 'Yes') {
-          const badge = document.createElement('span');
-          badge.className = 'badge vegan-badge';
-          badge.textContent = '🟢 Vegan-Friendly';
-          badgeElement.appendChild(badge);
-        }
-      });
+  // Also listen for form changes (Dawn theme specific)
+  const variantForm = document.querySelector('form[action*="/cart/add"]');
+  if (variantForm) {
+    variantForm.addEventListener('change', function(e) {
+      if (e.target.name === 'id') {
+        // Get variant data from the form or global product object
+        const selectedVariantId = e.target.value;
+        const variant = window.product?.variants?.find(v => v.id == selectedVariantId);
+        updateVeganBadge(variant);
+      }
     });
-  </script>
+  }
+});
+</script>
 {%- endif -%}
   {%- if product.quantity_price_breaks_configured? -%}
     {{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
