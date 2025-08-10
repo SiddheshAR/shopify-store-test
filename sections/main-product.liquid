@@ -22,48 +22,86 @@
     {{ 'component-swatch.css' | asset_url | stylesheet_tag }}
   {% endunless %}
   {%- if product.selected_or_first_available_variant.metafields.custom.vegan_friendly -%}
-  <div class="variant-metafield" id="vegan-badge">
-    {%- if product.selected_or_first_available_variant.metafields.custom.vegan_friendly.value == 'Yes' -%}
-      <span class="badge vegan-badge">🟢 Vegan-Friendly</span>
-    {%- endif -%}
-  </div>
+<div class="variant-metafield" id="vegan-badge">
+  {%- if product.selected_or_first_available_variant.metafields.custom.vegan_friendly.value == 'Yes' -%}
+    <span class="badge vegan-badge">🟢 Vegan-Friendly</span>
+  {%- endif -%}
+</div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+  // Inject product data from Liquid into JavaScript
+  const productData = {{ product | json }};
   const badgeElement = document.getElementById('vegan-badge');
-  if (!badgeElement) return;
+  
+  if (!badgeElement || !productData) return;
+  
+  console.log('Product data loaded:', productData);
+  console.log('Available variants:', productData.variants);
 
-  // Function to update badge
-  function updateVeganBadge(variant) {
+  // Function to update the vegan badge
+  function updateVeganBadge(variantId) {
+    const variant = productData.variants.find(v => v.id == variantId);
+    console.log('Selected variant:', variant);
+    console.log('Vegan metafield:', variant?.metafields?.custom?.vegan_friendly);
+    
+    // Clear current badge
     badgeElement.innerHTML = '';
     
+    // Show badge if variant is vegan-friendly
     if (variant?.metafields?.custom?.vegan_friendly?.value === 'Yes') {
       const badge = document.createElement('span');
       badge.className = 'badge vegan-badge';
       badge.textContent = '🟢 Vegan-Friendly';
       badgeElement.appendChild(badge);
+      console.log('Vegan badge added');
+    } else {
+      console.log('No vegan badge - metafield value:', variant?.metafields?.custom?.vegan_friendly?.value);
     }
   }
 
-  // Listen for multiple possible events
-  window.addEventListener('variant:changed', function (event) {
-    updateVeganBadge(event.detail.variant);
+  // Listen for variant selection changes (Dawn theme)
+  const variantInputs = document.querySelectorAll('input[name="id"], select[name="id"]');
+  
+  variantInputs.forEach(input => {
+    input.addEventListener('change', function(e) {
+      console.log('Variant changed to:', e.target.value);
+      updateVeganBadge(e.target.value);
+    });
   });
 
-  // Also listen for form changes (Dawn theme specific)
-  const variantForm = document.querySelector('form[action*="/cart/add"]');
-  if (variantForm) {
-    variantForm.addEventListener('change', function(e) {
-      if (e.target.name === 'id') {
-        // Get variant data from the form or global product object
-        const selectedVariantId = e.target.value;
-        const variant = window.product?.variants?.find(v => v.id == selectedVariantId);
-        updateVeganBadge(variant);
-      }
-    });
+  // Also listen for any variant picker changes
+  document.addEventListener('change', function(e) {
+    if (e.target.matches('[name="id"]')) {
+      updateVeganBadge(e.target.value);
+    }
+  });
+
+  // Initial load - show badge for currently selected variant
+  const currentVariantId = productData.selected_or_first_available_variant?.id;
+  if (currentVariantId) {
+    updateVeganBadge(currentVariantId);
   }
 });
 </script>
+
+<style>
+.vegan-badge {
+  display: inline-block;
+  background: #4ade80;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  margin: 10px 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.variant-metafield {
+  margin: 15px 0;
+}
+</style>
 {%- endif -%}
   {%- if product.quantity_price_breaks_configured? -%}
     {{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
