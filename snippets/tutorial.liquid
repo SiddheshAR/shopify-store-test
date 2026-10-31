@@ -1,6 +1,18 @@
 {% comment %} {{% asssign myVariables = 'HelloWorld' %} }}
 {{ myVariables }} {% endcomment %}
- {% assign myVariable = 20 % %}
- {% assign myVariable1 = 30 % %}
+ {% assign myVariable = 20 %}
+ {% assign myVariable1 = 30 %}
 
- <p>NIIUU  {{ myVariable1}}</p>
+ <p>NIIUU  {{ myVariable1}}</p>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% assign myVariable = 20 % %}"
+  to: "{% assign myVariable = 20 %}"
+  position: 97..125
+- from: "{% assign myVariable1 = 30 % %}"
+  to: "{% assign myVariable1 = 30 %}"
+  position: 128..157
+{%- endcomment -%}
